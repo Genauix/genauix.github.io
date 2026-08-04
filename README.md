@@ -29,16 +29,6 @@ We build software for institutions that demand accuracy — research platforms, 
 
 Next.js 16 · TypeScript · Tailwind CSS v4 · Framer Motion · Spline 3D · Recharts · Geist
 
-### Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-### Deploy
-
-Works out of the box on **Vercel** and **GitHub Pages**.
 
 ---
 
