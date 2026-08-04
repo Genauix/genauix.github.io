@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/genauix-logo.png" alt="Genauix" width="64" height="64" />
+  <img src="public/genauix_banner.jpg" alt="Genauix" width="640" height="320" />
 </p>
 
 <h1 align="center">Genauix</h1>
