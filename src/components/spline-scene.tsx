@@ -6,7 +6,8 @@
  */
 'use client';
 
-import { Suspense, lazy, useCallback } from 'react';
+import { Suspense, lazy, useCallback, useEffect } from 'react';
+import { useLoader } from './loader-context';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -25,6 +26,12 @@ export function SplineScene({
   onLoad,
   bgColor = '#0A0B0D',
 }: SplineSceneProps) {
+  const { registerAsset, resolveAsset } = useLoader();
+
+  useEffect(() => {
+    registerAsset();
+  }, [registerAsset]);
+
   const handleLoad = useCallback((app: unknown) => {
     // Force the Spline scene background to match the container
     const splineApp = app as Record<string, unknown>;
@@ -32,7 +39,8 @@ export function SplineScene({
       (splineApp as { setBackgroundColor: (color: string) => void }).setBackgroundColor(bgColor);
     }
     onLoad?.(app);
-  }, [onLoad, bgColor]);
+    resolveAsset();
+  }, [onLoad, bgColor, resolveAsset]);
 
   return (
     <Suspense

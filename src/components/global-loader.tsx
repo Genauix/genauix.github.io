@@ -1,35 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
+import { useLoader } from './loader-context';
 
 export function GlobalLoader() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isReady } = useLoader();
 
   useEffect(() => {
     // Prevent scrolling while loading
-    document.body.style.overflow = 'hidden';
-
-    const handleLoad = () => {
-      // Add a slight delay to ensure smooth transition and make it feel deliberate
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.overflow = 'auto';
-      }, 800);
-    };
-
-    if (document.readyState === 'complete') {
-      handleLoad();
+    if (!isReady) {
+      document.body.style.overflow = 'hidden';
     } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
+      document.body.style.overflow = 'auto';
     }
-  }, []);
+  }, [isReady]);
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {!isReady && (
         <motion.div
           key="global-loader"
           className="fixed inset-0 z-[100] flex items-center justify-center"

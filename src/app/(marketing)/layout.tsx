@@ -14,6 +14,7 @@ import { CustomCursor } from '@/components/cursor';
 import { ProgressBar } from '@/components/progress-bar';
 import { PageTransition } from '@/components/page-transition';
 import { GlobalLoader } from '@/components/global-loader';
+import { LoaderProvider } from '@/components/loader-context';
 
 export default function MarketingLayout({
   children,
@@ -21,7 +22,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <LoaderProvider>
       <GlobalLoader />
       <CustomCursor />
       <ProgressBar />
@@ -30,6 +31,6 @@ export default function MarketingLayout({
         <PageTransition>{children}</PageTransition>
       </main>
       <Footer />
-    </>
+    </LoaderProvider>
   );
 }
