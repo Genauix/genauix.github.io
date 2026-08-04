@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   },
   description:
     'Precision-built websites, SaaS platforms, and research infrastructure. Research-grade software for institutions that demand accuracy.',
-  metadataBase: new URL('https://genauix.com'),
+  // Update to the exact GitHub Pages URL so absolute paths for og:image resolve correctly
+  metadataBase: new URL('https://genauix.github.io'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -35,12 +36,22 @@ export const metadata: Metadata = {
     title: 'Genauix — Precision Engineering Studio',
     description:
       'Precision-built websites, SaaS platforms, and research infrastructure.',
+    // Explicitly declaring the image ensures WhatsApp has the full absolute URL immediately
+    images: [
+      {
+        url: '/opengraph-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Genauix Banner',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Genauix — Precision Engineering Studio',
     description:
       'Precision-built websites, SaaS platforms, and research infrastructure.',
+    images: ['/twitter-image.jpg'],
   },
 };
 
