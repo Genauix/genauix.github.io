@@ -62,7 +62,7 @@ export function StudioPageClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            Precision is not a marketing word. It is how I work.
+            Precision is not a marketing word. It is how we work.
           </motion.h1>
           <motion.p
             style={{ fontSize: '17px', color: 'var(--ink-muted)', lineHeight: 1.7, maxWidth: 560 }}
@@ -70,7 +70,7 @@ export function StudioPageClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            Genauix is a solo engineering studio that builds software for
+            Genauix is a full-stack engineering studio that builds software for
             organizations that cannot afford imprecision — research labs, universities,
             and institutions where data accuracy is not a feature but a requirement.
           </motion.p>
@@ -84,17 +84,16 @@ export function StudioPageClient() {
             <div>
               <span className="coordinate-tick block mb-4">STD.02 — Founder</span>
               <h2 className="font-display mb-6" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
-                One person. Full stack.
+                Led by precision.
               </h2>
               <div className="space-y-4" style={{ fontSize: '15px', color: 'var(--ink-muted)', lineHeight: 1.7 }}>
                 <p>
-                  Every line of code, every design decision, every deployment —
-                  handled by one engineer who owns the outcome end to end.
+                  Genauix is led by <a href="https://keykyrios.github.io/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-signal transition-colors underline decoration-hairline underline-offset-4">Mitrajit Ghorui</a>, CEO. Every line of code, every design decision, and every deployment is held to the highest standard of execution.
                 </p>
                 <p>
                   No account managers. No handoffs between teams.
                   No &ldquo;let me check with the developer.&rdquo;
-                  You talk directly to the person building your system.
+                  You talk directly to the people building your system.
                 </p>
                 <p>
                   As the studio grows, this page will too. But the standard
@@ -155,7 +154,7 @@ export function StudioPageClient() {
           <div className="mb-16">
             <span className="coordinate-tick block mb-4">STD.03 — Philosophy</span>
             <h2 className="font-display" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
-              How I think about craft
+              How we think about craft
             </h2>
           </div>
 
@@ -204,11 +203,11 @@ export function StudioPageClient() {
       <section className="py-24 md:py-32 text-center">
         <div className="container-genauix">
           <h2 className="font-display mb-6" style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>
-            Work with me
+            Work with us
           </h2>
           <p className="mb-8 mx-auto" style={{ fontSize: '17px', color: 'var(--ink-muted)', lineHeight: 1.6, maxWidth: 480 }}>
-            I take on a small number of projects at a time to maintain the quality standard.
-            If you have a project that demands precision, let me know.
+            We take on a small number of projects at a time to maintain the quality standard.
+            If you have a project that demands precision, let us know.
           </p>
           <MagnetButton href="/contact">Start a conversation</MagnetButton>
         </div>

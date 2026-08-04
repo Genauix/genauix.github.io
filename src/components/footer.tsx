@@ -184,7 +184,7 @@ export function Footer() {
               opacity: 0.5,
             }}
           >
-            © {new Date().getFullYear()} Genauix. Precision engineering.
+            © {new Date().getFullYear()} Genauix. Made by <a href="https://keykyrios.github.io/" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors underline decoration-hairline underline-offset-2">Mitrajit Ghorui</a>.
           </span>
         </div>
       </div>

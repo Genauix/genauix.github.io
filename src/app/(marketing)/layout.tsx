@@ -13,6 +13,7 @@ import { Footer } from '@/components/footer';
 import { CustomCursor } from '@/components/cursor';
 import { ProgressBar } from '@/components/progress-bar';
 import { PageTransition } from '@/components/page-transition';
+import { GlobalLoader } from '@/components/global-loader';
 
 export default function MarketingLayout({
   children,
@@ -21,6 +22,7 @@ export default function MarketingLayout({
 }) {
   return (
     <>
+      <GlobalLoader />
       <CustomCursor />
       <ProgressBar />
       <Nav />
