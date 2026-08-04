@@ -1,0 +1,432 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Force Spline canvases to blend seamlessly into the page */
+canvas {
+  background: transparent !important;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   GENAUIX DESIGN SYSTEM — Section 2.1–2.5 of the Blueprint
+   Dark-mode-first. No light mode. This IS the palette.
+   ============================================================ */
+
+:root {
+  /* 2.1 Color tokens — deliberately NOT purple/blue gradient */
+  --canvas: #0A0B0D;
+  --surface: #131417;
+  --surface-raised: #1B1D21;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --ink: #EDEBE4;
+  --ink-muted: #8B8D93;
+  --signal: #FF5A1F;
+  --signal-dim: #7A2F16;
+  --data: #5EEAD4;
+
+  /* 2.5 Motion — primary easing (expo-out, no overshoot) */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-hover: 150ms;
+  --duration-reveal: 500ms;
+  --duration-hero: 800ms;
+
+  /* 2.3 Grid */
+  --container-max: 1440px;
+  --margin-desktop: 96px;
+  --margin-mobile: 24px;
+  --gutter: 24px;
+  --radius: 6px;
+
+  /* Font variables */
+  --font-display: var(--font-instrument-serif), 'Instrument Serif', serif;
+  --font-body: var(--font-geist-sans), 'Geist Sans', system-ui, sans-serif;
+  --font-mono-genauix: var(--font-geist-mono), 'Geist Mono', ui-monospace, monospace;
+
+  /* Remap shadcn semantic tokens to Genauix dark palette */
+  --background: #0A0B0D;
+  --foreground: #EDEBE4;
+  --card: #131417;
+  --card-foreground: #EDEBE4;
+  --popover: #1B1D21;
+  --popover-foreground: #EDEBE4;
+  --primary: #FF5A1F;
+  --primary-foreground: #0A0B0D;
+  --secondary: #1B1D21;
+  --secondary-foreground: #EDEBE4;
+  --muted: #131417;
+  --muted-foreground: #8B8D93;
+  --accent: #1B1D21;
+  --accent-foreground: #EDEBE4;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #FF5A1F;
+  --chart-1: #5EEAD4;
+  --chart-2: #FF5A1F;
+  --chart-3: #8B8D93;
+  --chart-4: #7A2F16;
+  --chart-5: #EDEBE4;
+  --sidebar: #131417;
+  --sidebar-foreground: #EDEBE4;
+  --sidebar-primary: #FF5A1F;
+  --sidebar-primary-foreground: #0A0B0D;
+  --sidebar-accent: #1B1D21;
+  --sidebar-accent-foreground: #EDEBE4;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #FF5A1F;
+}
+
+/* Dark class also maps to Genauix — consistent everywhere */
+.dark {
+  --background: #0A0B0D;
+  --foreground: #EDEBE4;
+  --card: #131417;
+  --card-foreground: #EDEBE4;
+  --popover: #1B1D21;
+  --popover-foreground: #EDEBE4;
+  --primary: #FF5A1F;
+  --primary-foreground: #0A0B0D;
+  --secondary: #1B1D21;
+  --secondary-foreground: #EDEBE4;
+  --muted: #131417;
+  --muted-foreground: #8B8D93;
+  --accent: #1B1D21;
+  --accent-foreground: #EDEBE4;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #FF5A1F;
+  --chart-1: #5EEAD4;
+  --chart-2: #FF5A1F;
+  --chart-3: #8B8D93;
+  --chart-4: #7A2F16;
+  --chart-5: #EDEBE4;
+  --sidebar: #131417;
+  --sidebar-foreground: #EDEBE4;
+  --sidebar-primary: #FF5A1F;
+  --sidebar-primary-foreground: #0A0B0D;
+  --sidebar-accent: #1B1D21;
+  --sidebar-accent-foreground: #EDEBE4;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #FF5A1F;
+}
+
+/* Tailwind v4 theme integration */
+@theme inline {
+  /* Genauix tokens */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-hairline: var(--hairline);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-signal: var(--signal);
+  --color-signal-dim: var(--signal-dim);
+  --color-data: var(--data);
+
+  /* Fonts */
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono-genauix);
+  --font-serif: var(--font-display);
+  --font-heading: var(--font-display);
+
+  /* Radii — 6px base, no rounded-2xl slop */
+  --radius-default: 6px;
+  --radius-pill: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-3xl: 12px;
+  --radius-4xl: 14px;
+
+  /* shadcn semantic tokens mapped to Genauix */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ============================================================
+   BASE STYLES — Dark-mode-first (Section 0.2)
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TYPOGRAPHY — Section 2.2
+   ============================================================ */
+
+/* Display — Instrument Serif: one serif moment per page, used big, sparingly */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ============================================================
+   LAYOUT — Section 2.3
+   ============================================================ */
+
+.container-genauix {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--margin-desktop);
+  padding-right: var(--margin-desktop);
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .container-genauix {
+    padding-left: var(--margin-mobile);
+    padding-right: var(--margin-mobile);
+  }
+}
+
+/* 12-column grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+
+/* ============================================================
+   COMPONENT TOKENS
+   ============================================================ */
+
+/* Cards — 6px radius, hairline border, never rounded-2xl */
+.card-surface {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+}
+
+.card-raised {
+  background: var(--surface-raised);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+}
+
+/* ============================================================
+   BUTTONS — Section 2.3: only pill shape is primary CTA + badges
+   ============================================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--signal);
+  color: var(--canvas);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 9999px; /* The ONE pill shape */
+  cursor: pointer;
+  transition: transform var(--duration-hover) var(--ease-expo),
+              box-shadow var(--duration-hover) var(--ease-expo);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 32px rgba(255, 90, 31, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color var(--duration-hover) var(--ease-expo),
+              background var(--duration-hover) var(--ease-expo);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--surface);
+}
+
+/* Badge/tag chips — the other pill shape */
+.badge-genauix {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  font-family: var(--font-mono-genauix);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid var(--hairline);
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   FOCUS — Section 10.7: real focus rings, never replaced by cursor
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: rgba(255, 90, 31, 0.25);
+  color: var(--ink);
+}
+
+/* ============================================================
+   SCROLLBAR (subtle, dark-themed)
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-raised);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* ============================================================
+   REDUCED MOTION — Section 10.7
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   BLUEPRINT MOTIF UTILITIES — Section 2.4
+   ============================================================ */
+
+.coordinate-tick {
+  font-family: var(--font-mono-genauix);
+  font-size: 10px;
+  color: var(--ink-muted);
+  opacity: 0.5;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Section divider with crosshair mark */
+.section-divider {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: var(--hairline);
+}
+
+.section-divider::before {
+  content: '+';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono-genauix);
+  font-size: 14px;
+  color: var(--ink-muted);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
