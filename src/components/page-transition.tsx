@@ -1,0 +1,28 @@
+/**
+ * Page Transition Wrapper — Section 5.2 of the Blueprint
+ * 
+ * Motion AnimatePresence, 300ms crossfade + 12px vertical settle, outExpo easing.
+ */
+'use client';
+
+import { motion } from 'motion/react';
+import { usePathname } from 'next/navigation';
+
+export function PageTransition({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  return (
+    <motion.div
+      key={pathname}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
